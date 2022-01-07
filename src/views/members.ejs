@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, inital-scale=1.0'>
+    <meta http-equiv='X-U-compatible' content='ie=edge'>
+    <title>Real time chat app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/reset.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<body>
+    <div class='wrapper'>
+        <section class='chat'>
+            <header>
+                <a href='/chat' class="back-icon"> <i class="fas fa-arrow-left"></i> </a>
+                <img src='https://i.ibb.co/R4h7G0j/download.png' alt="room-profile">
+                <div class='details'>
+                    <span class="room_name_heading"></span>
+                    <input type="hidden" id="room_name" value="">
+                </div>
+            </header>
+            <div class='members-list'>
+                <div id="member-list">
+
+                </div>
+        </section>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            //Add Chat Heading From localstorage
+
+            const title = document.querySelector(".room_name_heading");
+            const room_name = localStorage.getItem('room');
+            if (room_name) {
+                title.textContent = room_name;
+                document.querySelector("#room_name").value = room_name;
+            }
+            const socket = io();
+            //Join chat room 
+            const room = document.querySelector('#room_name').value;
+            socket.emit('joinRoom', {
+                username: localStorage.getItem('name'),
+                room
+            })
+
+            // Get room and users
+            socket.on('roomUsers', ({
+                room,
+                users
+            }) => {
+                outputRoomname(users);
+            });
+
+            function outputRoomname(users) {
+                console.log(users);
+                document.querySelector("#member-list").innerHTML = `
+                    ${users.map(user => `                    
+                    <a>
+                        <div class='content'>
+                            <div class='details' style='display: inline-flex; align-items: center;'>
+                                <img src='https://i.ibb.co/zNR9ct8/photodune-9235903-game-m-16x9.jpg' alt="member-profile" style="margin-right: 10px;">
+                                <span style='font-size: 18px; width: 200px;'> ${user.username} </span>
+                            </div>
+                        </div>
+                    </a>`).join("")}
+                `;
+           
+            };
+        </script>
+</body>
+
+</html>

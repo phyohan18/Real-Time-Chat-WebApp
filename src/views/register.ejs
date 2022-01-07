@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, inital-scale=1.0'>
+    <meta http-equiv='X-U-compatible' content='ie=edge'>
+    <title>Real time chat app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/reset.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
+    <script src="/js/register.js" defer></script>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <section class='form sign up'>
+            <header> Realtime Chat App</header>
+            <form onsubmit="event.preventDefault(); register();">
+                <div class='personal-details'>
+                    <div class='field input'>
+                        <label for="firstnameInput">Name</label>
+                        <input id="nameInput" type='text' placeholder="Name here" required>
+                    </div>
+                </div>
+                <div class='field input'>
+                    <label for="emailInput">Email Address</label>
+                    <input id="emailInput" type='email' placeholder="Email Address here" required>
+                </div>
+                <div class='field input'>
+                    <label for="passwordInput">Password</label>
+                    <input id="passwordInput" type='password' placeholder="Password here" required>
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+                <div class='field image'>
+                    <label for="fileInput">Select profile picture (Optional)</label>
+                    <input id="fileInput" type='file'>
+                </div>
+                <div class='field button'>
+                    <input type='submit' value='Register'>
+                </div>
+                <div class='link'> Already signed up ? <a href='/login'>Login</a> </div>
+            </form>
+        </section>
+    </div>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src='/js/main.js'></script>
+    <script>
+        /* uploader in froms */
+        // Get a reference to the file input element
+        const inputElement = document.querySelector('input[type="file"]');
+
+        // Create a FilePond instance
+        const pond = FilePond.create(inputElement);
+    </script>
+</body>
+
+</html>

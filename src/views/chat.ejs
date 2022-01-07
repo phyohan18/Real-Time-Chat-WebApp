@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, inital-scale=1.0'>
+    <meta http-equiv='X-U-compatible' content='ie=edge'>
+    <title>Real time chat app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/reset.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class='wrapper'>
+        <section class='chat'>
+            <header>
+                <a href='/rooms' class="back-icon"> <i class="fas fa-arrow-left"></i> </a>
+                <img src='https://i.ibb.co/R4h7G0j/download.png' alt="room-profile">
+                <div class='details'>
+                    <span class="room_name_heading"></span>
+                    <input type="hidden" id="room_name">
+                </div>
+                <a href="/members" class="members">All Members</a>
+            </header>
+            <div class='chat-box'>
+            </div>
+            <form class='typing-area'>
+                <input id="msg" type='text' placeholder='Type a message here...'>
+                <button id="sendBtn"><i class="fab fa-telegram-plane"> </i> </button>
+            </form>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+
+</body>
+
+</html>

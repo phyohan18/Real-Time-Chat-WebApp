@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, inital-scale=1.0'>
+    <meta http-equiv='X-U-compatible' content='ie=edge'>
+    <title>Real time chat app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/reset.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <script src="/js/room.js" defer></script>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <section class='rooms'>
+            <header>
+                <div class='content'>
+                    <a href='/rooms' class="back-icon"> <i class="fas fa-arrow-left"></i> </a>
+                    <img src='https://i.ibb.co/R4h7G0j/download.png' alt="user-profile">
+                    <div class='details'>
+                        <div style='display: flex;'>
+                            <span class="user-name"> </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" onclick="logoutChk();return false;" class='logout'>Logout</a>
+            </header>
+            <div class='form sign up' style="padding:0;">
+                <form onsubmit="event.preventDefault(); addRoom();">
+                    <div class=' field input '>
+                        <label for="nameInput">Room Name</label>
+                        <input id="nameInput" type='text' placeholder="Enter room name" required>
+                    </div>
+                    <div class=' field input '>
+                        <label for="passwordInput">Secert Code</label>
+                        <input id="passwordInput" type='password' placeholder="Set secret code" required>
+                        <i class="fas fa-eye" id="togglePassword"></i>
+                    </div>
+                    <div class='field button'>
+                        <input type='submit' value='Create Room'>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+        document.querySelector(".user-name").textContent = localStorage.getItem("name");
+    </script>
+</body>
+
+</html>
